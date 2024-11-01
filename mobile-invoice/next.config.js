@@ -1,14 +1,19 @@
 const nextConfig = {
   basePath: '/lechlak.github.io',
-  experimental: {
-    esmExternals: 'loose'
-  },
-  output: "export",  // <=== enables static exports
+ //output: "export",  // <=== enables static exports
   reactStrictMode: true,
+};
+
+// next.config.js (Webpack-based)
+module.exports = {
   webpack: (config) => {
-    config.externals = [...config.externals, { canvas: "canvas" }]; // required to make pdfjs work
+    // ... Webpack configuration
     return config;
   },
 };
 
-module.exports = nextConfig;
+// next.config.js (Turbopack-compatible)
+module.exports = {
+  // ... Turbopack configuration
+  webpack5: true, // Enable Webpack 5 compatibility for certain features
+};
